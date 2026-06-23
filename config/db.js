@@ -16,7 +16,7 @@ const connectDB = async () => {
 const db = mysql.createConnection({
   host: process.env.MYSQL_HOST,        // e.g., localhost
   user: process.env.MYSQL_USER,        // e.g., root
-  password: process.env.MYSQL_PASSWORD,// your DB password
+  password: process.env.MYSQL_PASSWORD || "",// your DB password
   database: process.env.MYSQL_DB       // database name (e.g., my_app_db)
 });
 // Attempt to connect to the MySQL database
@@ -30,4 +30,5 @@ db.connect((err) => {
     console.log('MySQL connected');
   }
 });
+
 module.exports = {connectDB, db}
